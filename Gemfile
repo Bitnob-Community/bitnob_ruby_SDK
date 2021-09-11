@@ -2,5 +2,5 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in paystack.gemspec
+# Specify your gem's dependencies in bitnob.gemspec
 gemspec
