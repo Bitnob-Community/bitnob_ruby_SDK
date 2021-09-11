@@ -39,21 +39,25 @@ class Bitnob
               else
                 secret
               end
-    warn 'Warning: To ensure your bitnob account api keys are safe, It is best to always set your keys in the environment variable'
+    warn 'Warning: To ensure your bitnob account api keys are safe,
+    It is best to always set your keys in the environment variable'
 
     if public_key.nil?
       raise BitnobBadKeyError,
-            'No public key found. Please kindly make sure you set your public key as an environment variable BITNOB_PUBLIC_KEY'
+            'No public key found. Please kindly make sure you set your public key as
+             an environment variable BITNOB_PUBLIC_KEY'
     end
 
     if secret_key.nil?
       raise BitnobBadKeyError,
-            'No secret key found. Please kindly make sure you set your secret key as an environment variable BITNOB_SECRET_KEY'
+            'No secret key found. Please kindly make sure you set your secret key as
+            an environment variable BITNOB_SECRET_KEY'
     end
 
     if webhook_secret.nil?
       raise BitnobBadKeyError,
-            'No webhook secret found. Please kindly make sure you set your public key as an environment variable WEBHOOK_SECRET'
+            'No webhook secret found. Please kindly make sure you set your public key as
+            an environment variable WEBHOOK_SECRET'
     end
   end
 end

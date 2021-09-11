@@ -8,3 +8,7 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+Lint/MissingSuper:
+  Exclude:
+    - 'lib/**/**/*'
