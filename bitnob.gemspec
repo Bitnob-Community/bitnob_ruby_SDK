@@ -32,5 +32,4 @@ Gem::Specification.new do |spec|
   # Dependencies
   spec.required_ruby_version = '>= 2.5.0'
   spec.add_dependency 'httparty', '~> 0.19.0'
-
 end
