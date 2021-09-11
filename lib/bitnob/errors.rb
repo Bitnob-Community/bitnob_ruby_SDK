@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class BitnobServerError < StandarError
-    attr_reader :response
-    def initialize(response=nil)
-      @response=response
-    end
+  attr_reader :response
+
+  def initialize(response = nil)
+    @response = response
+  end
 end
 
 class BitnobBadKeyError < StandardError
@@ -18,6 +21,9 @@ class TooManyRequests < StandardError
 end
 
 class NotFoundError < StandardError
+end
+
+class IncompleteParameterError < StandardError
 end
 
 class UnAuthorizedError < StandardError
