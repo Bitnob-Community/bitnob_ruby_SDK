@@ -18,17 +18,18 @@ class Base
   # make a get request
   def get_request(endpoint)
     response = HTTParty.get(endpoint, headers: { 'Authorization' => "Bearer #{bitnob_object.secret_key}" })
-    unless response.code == 200 || response.code == 201
-      raise BitnobServerError.new(response), "HTTP Code #{response.code}: #{response.body}"
+    begin
+      unless response.code == 200 || response.code == 201
+        raise BitnobServerError.new(response), "HTTP Code #{response.code}: #{response.body}"
+      end
+
+      raise BitnobServerError.new(response), "Server Message: #{response.message}" unless response.code != 0
+
+      response
+    rescue JSON::ParserError => e
+      raise BitnobServerError.new(response),
+            "Invalid result data. Could not parse JSON response body \n #{e.message}"
     end
-
-    return response
-
-    raise BitnobServerError.new(response), "Server Message: #{response.message}" unless response.code != 0
-  rescue JSON::ParserError => e
-    raise BitnobServerError.new(response),
-          "Invalid result data. Could not parse JSON response body \n #{e.message}"
-    response
   end
 
   # method to make a post request

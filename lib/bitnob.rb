@@ -8,7 +8,7 @@ require_relative 'bitnob/errors'
 class Bitnob
   attr_accessor :public_key, :secret_key, :webhook_secret, :production, :url
 
-  def initialize(public_key = nil, secret_key = nil, webhook_secret = nil, production = false)
+  def initialize(public_key = nil, secret_key = nil, webhook_secret = nil, production: false)
     bitnob_sandbox_url = BASE_ENDPOINTS::BITNOB_SANDBOX_URL
     bitnob_live_url = BASE_ENDPOINTS::BITNOB_LIVE_URL
     @public_key = if public_key.nil?
@@ -24,9 +24,7 @@ class Bitnob
              bitnob_live_url
            end
 
-    def base_url
-      url
-    end
+    base_url = -> { return url }
 
     @secret_key = if secret_key.nil?
                     ENV['BITNOB_SECRET_KEY']

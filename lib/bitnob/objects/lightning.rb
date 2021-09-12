@@ -12,7 +12,7 @@ class Lightning < Base
     check_passed_parameters(required_parameters, data)
     payload = data.to_json
 
-    post_request("#{base_url}#{BASE_ENDPOINTS::LN}/createinvoice", payload)
+    post_request("#{base_url}#{BaseEndpoints::LN}/createinvoice", payload)
   end
 
   def pay_invoice(data)
@@ -22,32 +22,30 @@ class Lightning < Base
     check_passed_parameters(required_parameters, data)
     payload = data.to_json
 
-    post_request("#{base_url}#{BASE_ENDPOINTS::LN}/pay", payload)
+    post_request("#{base_url}#{BaseEndpoints::LN}/pay", payload)
   end
 
   def initiate_payment(request)
     base_url = bitnob_object.base_url
-    body = { 'request' => request }
-    payload = data.to_json
+    body = { request: request }
+    payload = body.to_json
 
-    response = post_request("#{base_url}#{BASE_ENDPOINTS::LN}/initiatepayment", payload)
+    post_request("#{base_url}#{BaseEndpoints::LN}/initiatepayment", payload)
+  end
 
-    return response
+  def decode_payment_request(request)
+    base_url = bitnob_object.base_url
+    body = { request: request }
+    payload = body.to_json
 
-    def decode_payment_request(request)
-      base_url = bitnob_object.base_url
-      body = { 'request' => request }
-      payload = data.to_json
+    post_request("#{base_url}#{BaseEndpoints::LN}/decodepaymentrequest", payload)
+  end
 
-      post_request("#{base_url}#{BASE_ENDPOINTS::LN}/decodepaymentrequest", payload)
-    end
+  def get_invoice(invoice_id)
+    base_url = bitnob_object.base_url
+    body = { id: invoice_id }
+    payload = body.to_json
 
-    def get_invoice(invoice_id)
-      base_url = bitnob_object.base_url
-      body = { 'id' => invoice_id }
-      payload = data.to_json
-
-      post_request("#{base_url}#{BASE_ENDPOINTS::LN}/getinvoice", payload)
-    end
+    post_request("#{base_url}#{BaseEndpoints::LN}/getinvoice", payload)
   end
 end
