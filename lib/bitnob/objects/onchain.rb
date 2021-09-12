@@ -15,8 +15,8 @@ class Onchain < Base
 
   def generate_address(customer_email)
     base_url = bitnob_object.base_url
-    body = {customerEmail: customer_email}
-    payload = body.to_json 
+    body = { customerEmail: customer_email }
+    payload = body.to_json
     post_request("#{base_url}#{BaseEndpoints::ADDRESS}/generate", payload)
   end
 
