@@ -13,7 +13,7 @@ require_relative 'bitnob/errors'
 class Bitnob
   attr_accessor :secret_key, :production, :url
 
-  def initialize(secret_key: nil , production: false)
+  def initialize(secret_key=nil , production=false)
     @secret_key = secret_key
     bitnob_sandbox_url = BaseEndpoints::BITNOB_SANDBOX_URL
     bitnob_live_url = BaseEndpoints::BITNOB_LIVE_URL
