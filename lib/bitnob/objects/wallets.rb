@@ -14,7 +14,7 @@ class Wallets < Base
     get_request("#{base_url}#{BaseEndpoints::ONCHAIN}?order=ASC&page=#{page_number}&take=#{limit}")
   end
 
-  def fetch_a_single_transaction(transaction_id)
+  def fetch_transaction(transaction_id)
     base_url = bitnob_object.base_url
     get_request("#{base_url}#{BaseEndpoints::ONCHAIN}/#{transaction_id}")
   end
