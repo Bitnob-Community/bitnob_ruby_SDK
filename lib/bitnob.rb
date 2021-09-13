@@ -47,5 +47,4 @@ class Bitnob
     
 end
 
-nob_pay = Bitnob.new
-p nob_pay.base_url
+
