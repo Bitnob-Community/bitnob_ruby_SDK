@@ -1,4 +1,4 @@
-# Nob.rb
+# Bitnob
 ---
 This is a Ruby gem for easy integration of Bitnob For Business API for various applications written in Ruby language from Bitnob.
 
