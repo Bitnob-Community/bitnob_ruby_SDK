@@ -10,7 +10,15 @@ This is a Ruby gem for easy integration of Bitnob For Business API for various a
 This gem requires Ruby 2.6+ and Rails 5.2+
 
 ### Installation 
-- Not yet published
+- Add the following to your gem file:
+```ruby
+        gem 'bitnob', '~> 0.1.0'
+```
+Then run:
+
+```ruby
+        bundle install
+```
 
 ### Usage 
 
