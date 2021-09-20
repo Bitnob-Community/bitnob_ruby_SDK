@@ -11,9 +11,9 @@ Gem::Specification.new do |spec|
   spec.email         = ['nonso@bitnob.com']
 
   spec.summary       = 'Bitnob gem for Ruby/Rails'
-  spec.description   = 'Client Library Gem for bitnob.co'
+  spec.description   = 'Client Library Gem for Bitnob API. Allows integration of Bitnob in your Ruby Applications'
   spec.homepage      = 'https://github.com/bitnob/bitnob_ruby_SDK'
-  spec.license       = 'BSD'
+  spec.license       = '0BSD'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
   # Dependencies
   spec.required_ruby_version = '>= 2.5.0'
   spec.add_dependency 'httparty', '~> 0.19.0'
-  spec.add_dependency 'dotenv'
+  spec.add_dependency 'dotenv', '~> 2.7'
 end

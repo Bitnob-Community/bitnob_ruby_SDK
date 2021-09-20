@@ -12,7 +12,7 @@ This gem requires Ruby 2.6+ and Rails 5.2+
 ### Installation 
 - Add the following to your gem file:
 ```ruby
-        gem 'bitnob', '~> 0.1.1'
+        gem 'bitnob', '~> 0.0.1'
 ```
 Then run:
 
@@ -88,10 +88,6 @@ or
         description: "Dorime for Nonso and Tumise",
         tokens: 300,
         expires_at: "24h",
-        mtokens: 200,
-        private: {},
-        is_including_private_channels: {},
-        is_fallback_included: {}
     }
 
     # Create a lightning invoice 
@@ -119,11 +115,10 @@ or
 
     payload = {
         customerEmail: "parah@bitnob.com",
-        reference: "txt-ref-09fdcsf-7658dcgfh-84738pokli",
         satoshis: 30000,
         address: "btcjshlidlsidskdslisidsdosilsdmxksjsjldksossjoioidjifkji.zjijsi",
         description: "Go buy your momma a house!",
-        priorityLevel: "priority"
+        priorityLevel: "regular"
     }
 
     # Send bitcoin using onchain 
