@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bitnob (0.1.0)
+    bitnob (0.1.1)
       dotenv
       httparty (~> 0.19.0)
 

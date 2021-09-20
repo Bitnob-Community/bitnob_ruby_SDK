@@ -9,7 +9,8 @@ require_relative 'bitnob/version'
 require_relative 'bitnob/modules/base_endpoints'
 require_relative 'bitnob/errors'
 
-
+# Initialize the SDK with your api secret key
+# - params <tt>:secret_key :production[default=false]</tt>
 class Bitnob
   attr_accessor :secret_key, :production, :url
 
@@ -46,5 +47,3 @@ class Bitnob
 
     
 end
-
-

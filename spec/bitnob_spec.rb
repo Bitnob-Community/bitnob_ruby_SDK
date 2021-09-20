@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'bitnob.rb'
 
-bitnob_test_secret_key = 'sk.ce348.f927bbae9cdae28b642d599fb0'
+bitnob_test_secret_key = 'sk.x-x-x-x-x.f927bbae9cdae28b642d599fb0'
 fake_secret_key = 'sk-cerjjkkl49003-xxx'
 
 RSpec.describe Bitnob do 

@@ -12,7 +12,7 @@ This gem requires Ruby 2.6+ and Rails 5.2+
 ### Installation 
 - Add the following to your gem file:
 ```ruby
-        gem 'bitnob', '~> 0.1.0'
+        gem 'bitnob', '~> 0.1.1'
 ```
 Then run:
 
