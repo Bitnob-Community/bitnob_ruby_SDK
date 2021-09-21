@@ -12,7 +12,7 @@ This gem requires Ruby 2.6+ and Rails 5.2+
 ### Installation 
 - Add the following to your gem file:
 ```ruby
-        gem 'bitnob', '~> 0.0.1'
+        gem 'bitnob', '~> 0.0.2'
 ```
 Then run:
 
@@ -21,39 +21,35 @@ Then run:
 ```
 
 ### Usage 
+- To use this SDK, you need to create a new Bitnob class with your API secret key gotten from your dashboard settings. We recommend you store such keys in an environment variable name `BITNOB_API_KEY`. Instantiating such object would look like this 
 
-### Instantiate a Bitnob object 
-- To use this SDK, you need to create a new Bitnob class with your API secret key gotten from your dashboard settings. We recommend you store such keys in an environment variable name `BITNOB_SECRET_KEY`. Instantiating such object would look like this 
-
-> nob_pay = Bitnob.new  
-
-Now this will throw a `BitnobBadKeyError` if you do not specify a secret key in the instantiation or set it as an environment variable.
-
-To Instatntiate it with an environment variable, you simply do this:
-
-> nob_pay = Bitnob.new('sk.-x-x-x-x-x-x-')
 
 By default the package assumes that you are currently working using a sandbox credential in development, however to go live, your `secret key` nust be a production-grade secret key and you need to specify `true` when instantiating your bitnob class like this:
 
-> nob_pay = Bitnob.new('sk.-x-x-x-x-', true)
+```ruby
+    require 'bitnob'
 
-or 
+    wallet = Wallet.new(true) # production
+   get_wallets = wallet.fetch_wallets
+   p get_wallets.body
 
-> nob_pay = Bitnob.new(production: true)
+    # Sandbox environment 
+
+    wallet = Wallet.new 
+    
+    get_transaction = wallet.fetch_all_transactions
+   p get_transaction.body
+```
 
 `NOTE`: It is best practice to always set your API keys to your environment variable for security purpose. Please be warned not use this package without setting your API keys in your environment variables in production.
 
 ### Bitnob Functions
-- Before making use of any bitnob functions, it is expected you instantiate a new Bitnob class and pass that new instantiation as an object to whatever function you wish to perform. Below is a demonstration:
+- Before making use of any bitnob functions, it is expected you instantiate a new Function class and pass production as true to whatever function you wish to perform. Below is a demonstration:
 
-> nob_pay = Bitnob.new(production: true)
-
-> ln = Lightning.new(nob_pay)
-
-- `Customer.new(nob_pay)`
-- `Lightning.new(nob_pay)`
-- `Onchain.new(nob_pay)`
-- `Wallets.new(nob_pay)`
+- `Customer.new(true)`
+- `Lightning.new(true)`
+- `Onchain.new(true)`
+- `Wallets.new(true)`
 
 
 #### Customers
@@ -79,9 +75,7 @@ or
 ```ruby
     require 'bitnob'
 
-    nob_pay = Bitnob.new(production: true)
-
-    ln = Lightning.new(nob_pay)
+    ln = Lightning.new(true)
 
     payload = {
         customerEmail: "parah@bitnob.com",
@@ -109,9 +103,7 @@ or
 
     require 'bitnob'
 
-    nob_pay = Bitnob.new(production: true)
-
-    on_chain = Onchain.new(nob_pay)
+    on_chain = Onchain.new(true)
 
     payload = {
         customerEmail: "parah@bitnob.com",
@@ -135,6 +127,32 @@ or
         - fetch_transaction
 
 
+
+### Webhook Authentication
+
+- You simply check to see if your webhook requests returns the appropriate body by simply doing this 
+
+```ruby 
+
+        require 'bitnob'
+
+        check_webhook = webhook_authentication(requests) # return true or false
+```
+
+### Important Note
+
+- it is important that response from each function returns both the response headers, body and status code. To work with only the reponse body simply call the `BODY` object after each function call :
+
+```ruby
+     require 'bitnob'
+
+    wallet = Wallet.new(true) # production
+   get_wallets = wallet.fetch_wallets
+   p get_wallets.body # fetches response body
+   p get_wallets.headers # fetches response headers
+
+
+```
 
 ## Development 
 

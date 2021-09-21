@@ -2,22 +2,40 @@
 
 require 'httparty'
 require_relative '../../modules/base_endpoints'
-
 require 'json'
 require_relative '../../errors'
 
 class Base
-  attr_reader :bitnob_object
+  attr_accessor :secret_key, :production, :url
 
-  def initialize(bitnob_object = nil)
-    raise ArgumentError, 'You must specify an object or api operation!!' unless bitnob_object.nil?
+  def initialize(production = false)
+    # - bitnob api key
+    @secret_key = ENV['BITNOB_API_KEY']
+    bitnob_sandbox_url = BaseEndpoints::BITNOB_SANDBOX_URL
+    bitnob_live_url = BaseEndpoints::BITNOB_LIVE_URL
 
-    @bitnob_object = bitnob_object
+    # set bitnob url to sandbox or live if we are in production or development
+    @url = if production == false
+             bitnob_sandbox_url
+           else
+             bitnob_live_url
+           end
+
+    def base_url
+      @url
+    end
+
+    if @secret_key.nil?
+      raise BitnobBadKeyError,
+            "No secret key supplied and couldn't find any in environment variables. Make sure to set secret key as an environment variable BITNOB_SECRET_KEY"
+    end
+
+    raise BitnobBadKeyError, "Invalid secret key #{@secret_key}" unless @secret_key[0..2] == 'sk.'
   end
 
   # make a get request
   def get_request(endpoint)
-    response = HTTParty.get(endpoint, headers: { 'Authorization' => "Bearer #{bitnob_object.secret_key}" })
+    response = HTTParty.get(endpoint, headers: { 'Authorization' => "Bearer #{@secret_key}" })
     begin
       unless response.code == 200 || response.code == 201
         raise BitnobServerError.new(response), "HTTP Code #{response.code}: #{response.body}"
@@ -38,7 +56,7 @@ class Base
                                body: data,
                                headers: {
                                  'Content-Type' => 'application/json',
-                                 'Authorization' => "Bearer #{bitnob_object.secret_key}"
+                                 'Authorization' => "Bearer #{@secret_key}"
                                }
                              })
 
@@ -55,7 +73,7 @@ class Base
                               body: data,
                               headers: {
                                 'Content-Type' => 'application/json',
-                                'Authorization' => "Bearer #{bitnob_object.secret_key}"
+                                'Authorization' => "Bearer #{@secret_key}"
                               }
                             })
 
@@ -66,6 +84,7 @@ class Base
     response
   end
 
+  # - Verify that passed parameter contains required parameters
   def check_parameters(required_params, passed_params)
     # This is used to check if the passed authorization parameters matches the required parameters
     required_params.each do |k, _v|
