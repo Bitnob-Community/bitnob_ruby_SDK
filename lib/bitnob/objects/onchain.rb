@@ -42,7 +42,7 @@ class Onchain < Base
   #
   #
   #     default: <tt>page_number => 1, limit => 10</tt>
-  def list_addresses(page_number: 1, limit: 10)
+  def list_addresses(page_number=1, limit=10)
     get_request("#{base_url}#{BaseEndpoints::ADDRESS}order=ASC&page=#{page_number}&take=#{limit}")
   end
 end

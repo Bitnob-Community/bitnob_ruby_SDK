@@ -6,5 +6,7 @@ module BaseEndpoints
   CUSTOMER = '/customers'
   LN = '/wallets/ln'
   ONCHAIN = '/wallets'
-  ADDRESS = '/address'
+  ADDRESS = '/addresses'
+  CHECKOUT = '/checkout'
+  CARDS = '/virtualcards'
 end

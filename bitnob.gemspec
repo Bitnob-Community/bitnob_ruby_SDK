@@ -26,15 +26,15 @@ Gem::Specification.new do |spec|
   spec.metadata['changelog_uri'] = spec.homepage
 
   # Dev dependencies
-  spec.add_development_dependency 'bundler', '~> 2.2.27'
-  spec.add_development_dependency 'rake', '~> 13.0.1'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 1.20.0'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.11.5'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.4.0'
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop-performance'
+  spec.add_development_dependency 'rubocop-rspec'
 
   # Dependencies
-  spec.required_ruby_version = '>= 2.5.0'
+  spec.required_ruby_version = '>= 2.6.0'
   spec.add_dependency 'dotenv', '~> 2.7'
   spec.add_dependency 'httparty', '~> 0.19.0'
 end
