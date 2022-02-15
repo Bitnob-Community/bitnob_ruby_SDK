@@ -29,5 +29,6 @@ class Swap < Base
 
         post_request("#{base_url}#{BaseEndpoints::ONCHAIN}/swap-usd-bitcoin", payload)
     end
-    
+
+end
     
