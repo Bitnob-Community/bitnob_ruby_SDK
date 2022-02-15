@@ -11,7 +11,7 @@ class Swap < Base
     #   amount : int  
 
     def swap_btc_usd(amount)
-        data = { amount : amount }
+        data = { amount: amount }
         payload = data.to_json
 
         post_request("#{base_url}#{BaseEndpoints::ONCHAIN}/swap-bitcoin-usd", payload)
@@ -24,7 +24,7 @@ class Swap < Base
     #   amount : int  
 
     def swap_usd_btc(amount)
-        data = { amount : amount }
+        data = { amount: amount }
         payload = data.to_json
 
         post_request("#{base_url}#{BaseEndpoints::ONCHAIN}/swap-usd-bitcoin", payload)
