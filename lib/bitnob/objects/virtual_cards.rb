@@ -48,8 +48,67 @@ class Cards < Base
      # - Required Parameters
      #   amount: int
      #   CardID - uuid string
-     def top_up(amount, id)
-        payload = { amount: amount, id: id}
+    def top_up(amount, cardId)
+        payload = { amount: amount, cardId: cardId}
         post_request("#{base_url}#{BaseEndpoints::CARDS}/topup", payload.to_json)
-     end
+    end
+
+     # Withdraw From Card 
+     # - Required Parameters
+     #   amount: int
+     #   CardID - uuid string
+    def withdraw(amount, cardId)
+        payload = { amount: amount, cardId: cardId}
+        post_request("#{base_url}#{BaseEndpoints::CARDS}/withdraw", payload.to_json)
+    end
+
+     # Freeze Card
+     # - Required Parameters
+     #   CardID - uuid string
+    def freeze(cardId)
+        payload = { cardId: cardId}
+        post_request("#{base_url}#{BaseEndpoints::CARDS}/freeze", payload.to_json)
+    end
+
+     # Unfreeze Card 
+     # - Required Parameters
+     #   CardID - uuid string
+    def unfreeze(cardId)
+        payload = { cardId: cardId}
+        post_request("#{base_url}#{BaseEndpoints::CARDS}/unfreeze", payload.to_json)
+    end
+
+     # Mock Transaction 
+     # - Required Parameters
+     #   amount: int
+     #   CardID - uuid string
+     #   Type - string
+    def mock_transaction(amount, cardId, type)
+        payload = { amount: amount, cardId: cardId, type: type}
+        post_request("#{base_url}#{BaseEndpoints::CARDS}/mock-transaction", payload.to_json)
+    end
+
+     # Terminate card
+     # - Required Parameters
+     #   CardID - uuid string
+    def terminate(cardId)
+        payload = {cardId: cardId}
+        post_request("#{base_url}#{BaseEndpoints::CARDS}/terminate", payload.to_json)
+    end
+
+     # Block Card
+     # - Required Parameters
+     #   CardID - uuid string
+    def block(cardId)
+        payload = { cardId: cardId}
+        post_request("#{base_url}#{BaseEndpoints::CARDS}/block", payload.to_json)
+    end
+
+     # Block Card
+     # - Required Parameters
+     #   CardID - uuid string
+    def unblock(cardId)
+        payload = { cardId: cardId}
+        post_request("#{base_url}#{BaseEndpoints::CARDS}/unblock", payload.to_json)
+    end
 end

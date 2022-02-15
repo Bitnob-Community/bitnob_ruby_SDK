@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
 
   # Dependencies
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 2.5.0'
   spec.add_dependency 'dotenv', '~> 2.7'
   spec.add_dependency 'httparty', '~> 0.19.0'
 end
