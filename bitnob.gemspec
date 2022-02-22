@@ -14,7 +14,6 @@ Gem::Specification.new do |spec|
   spec.description   = 'Client Library Gem for Bitnob API. Allows integration of Bitnob in your Ruby Applications'
   spec.homepage      = 'https://github.com/bitnob/bitnob_ruby_SDK'
   spec.license       = '0BSD'
-  spec.documentation = 'https://rubydoc.info/github/bitnob/bitnob_ruby_SDK/main'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'

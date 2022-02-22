@@ -65,6 +65,8 @@ By default the package assumes that you are currently working using a sandbox cr
         - get_customer 
         - update_customer
 
+
+
 ### Lightning
 - To create Lightning Transactions, simply follow the instruction at the beginning of this sub-heading and instantiate a new `Lightning` class.
     - The following functions are available:
@@ -96,6 +98,22 @@ By default the package assumes that you are currently working using a sandbox cr
    new_ln_invoice = ln.create_invoice(payload)
     
 ```
+
+> ### LNURL vs Lightning Address
+> A Lightning Address is a wrapper around lnurl. A Lightning Address is an Internet Identifier that allows anyone to send you Bitcoin over the Lightning Network. No scanning of QR codes or pasting invoices necessary. The Lightning URL on the other hand, is a lot more technical and requires the embedding and scanning of lightning invoices to initiate payments
+> The username you use to create the lnurl automatically becomes the lightning address in this case.
+
+### Lightning URL (LNURL) :new:
+- To create Lightning URL Operations, simply follow the instruction at the beginning of this sub-heading and instantiate a new `LNURL` class.
+    - The following functions are available:
+        - create_invoice
+        - pay_invoice 
+        - initiate_payment
+        - decode_payment request 
+        - get_invoice
+        - ln_pay :new:
+        - probe_for_route :new:
+        - probe_route :new:
 ### Onchain 
 - To create Onchain Transactions, simply follow the instruction at the beginning of this sub-heading and instantiate a new `Onchain` class.
     - The following functions are available:

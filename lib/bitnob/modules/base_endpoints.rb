@@ -5,6 +5,7 @@ module BaseEndpoints
   BITNOB_SANDBOX_URL = 'https://sandboxapi.bitnob.co/api/v1'
   CUSTOMER = '/customers'
   LN = '/wallets/ln'
+  LNURL = '/lnurl'
   ONCHAIN = '/wallets'
   ADDRESS = '/addresses'
   CHECKOUT = '/checkout'
