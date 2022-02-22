@@ -83,4 +83,41 @@ class Lightning < Base
 
     post_request("#{base_url}#{BaseEndpoints::LN}/getinvoice", payload)
   end
+
+  # - Ln Pay
+  #
+  # - Required Function Parameters
+  #  data: {
+  #       request: "string",
+  #       reference: "string",
+  #       customerEmail: "string",
+  #       description: "string"
+  #       }
+
+  def ln_pay(data)
+    payload = data.to_json
+    post_request("#{base_url}#{BaseEndpoints::LN}/pay", payload)
+  end
+
+  # - Probe For Route
+  #
+  # - Required Function Parameters
+  #  data: {
+  #       destination: "string",
+  #       tokens: "string",
+  #       total_mtokens: 0,
+  #       payment: "string"
+  #       }
+
+  def probe_for_route(data)
+    payload = data.to_json
+    post_request("#{base_url}#{BaseEndpoints::LN}/probeforroute", payload)
+  end
+
+  # - Probe Route
+  #
+  def probe_route()
+    payload= {}
+    post_request("#{base_url}#{BaseEndpoints::LN}/proberoute", paylod.to_json)
+  end
 end

@@ -34,7 +34,7 @@ class Checkout < Base
     #   limit : int 
     #   order: string ASC or DESC
 
-    def list_checkout(page=1, limit=10, order='ASC')
+    def list_checkouts(page=1, limit=10, order='ASC')
         get_request("#{base_url}#{BaseEndpoints::CHECKOUT}/?order=#{order}&page=#{page}&limit=#{limit}")
 
     end

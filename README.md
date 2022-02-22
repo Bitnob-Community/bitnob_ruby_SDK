@@ -50,9 +50,13 @@ By default the package assumes that you are currently working using a sandbox cr
 - `Lightning.new(true)`
 - `Onchain.new(true)`
 - `Wallets.new(true)`
+- `Cards.new(true)`
+- `Checkout.new(true)`
+- `Swap.new(true)`
+- `StableCoin.new(true)`
 
 
-#### Customers
+### Customers
 
 - To manage customers on your Bitnob for business in your ruby application, simply follow the instruction at the beginning of this sub-heading and instantiate a new `Customer` class.
     - The following functions are available:
@@ -69,6 +73,9 @@ By default the package assumes that you are currently working using a sandbox cr
         - initiate_payment
         - decode_payment request 
         - get_invoice
+        - ln_pay :new:
+        - probe_for_route :new:
+        - probe_route :new:
 
 
 ###### Full Transaction Workflow 
@@ -125,6 +132,51 @@ By default the package assumes that you are currently working using a sandbox cr
         - fetch_wallets
         - fetch_all_transactions
         - fetch_transaction
+        - recommend_btc_fees  :new:
+
+
+### Virtual Cards :new:
+- To initiate any Virtual Card Operation, simply follow the instruction at the beginning of this sub-heading and instantiate a new `Cards` class.
+    - The following functions are available:
+        - register_user
+        - create
+        - top_up
+        - withdraw
+        - freeze
+        - unfreeze
+        - mock_transaction
+        - terminate
+        - block 
+        - unblock
+
+### Swap :new:
+
+- To initiate any currency SWAP Operation, simply follow the instruction at the beginning of this sub-heading and instantiate a new `Swap` class.
+    - The following functions are available:
+        - swap_btc_usd
+        - swap_usd_btc
+
+
+### Checkout :new:
+
+- To initiate any Checkout Operation, simply follow the instruction at the beginning of this sub-heading and instantiate a new `Checkout` class.
+    - The following functions are available:
+        - create
+        - list_checkouts
+        - get_info
+        - get_status
+
+
+### StableCoin :new:
+
+- To integrate any StableCoin Operation, simply follow the instruction at the beginning of this sub-heading and instantiate a new `StableCoin` class.
+    - The following functions are available:
+        - swap_btc_usd
+        - swap_usd_btc
+
+
+
+
 
 
 
@@ -139,7 +191,7 @@ By default the package assumes that you are currently working using a sandbox cr
         check_webhook = webhook_authentication(requests) # return true or false
 ```
 
-### Important Note
+## Important Note
 
 - it is important that response from each function returns both the response headers, body and status code. To work with only the reponse body simply call the `BODY` object after each function call :
 

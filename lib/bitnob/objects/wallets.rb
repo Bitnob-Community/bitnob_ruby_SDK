@@ -20,4 +20,9 @@ class Wallets < Base
   def fetch_transaction(transaction_id)
     get_request("#{base_url}#{BaseEndpoints::ONCHAIN}/#{transaction_id}")
   end
+
+  # Recommend btc fees
+  def recommend_btc_fees()
+    get_request("#{base_url}#{BaseEndpoints::ONCHAIN}/recommend-fees/btc")
+  end
 end
