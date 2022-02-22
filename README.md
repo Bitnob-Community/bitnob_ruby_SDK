@@ -106,14 +106,16 @@ By default the package assumes that you are currently working using a sandbox cr
 ### Lightning URL (LNURL) :new:
 - To create Lightning URL Operations, simply follow the instruction at the beginning of this sub-heading and instantiate a new `LNURL` class.
     - The following functions are available:
-        - create_invoice
-        - pay_invoice 
-        - initiate_payment
-        - decode_payment request 
-        - get_invoice
-        - ln_pay :new:
-        - probe_for_route :new:
-        - probe_route :new:
+        - create
+        - decode_lnurl 
+        - pay_lnurl
+        - ln_withdrawal
+        - decode_ln_address
+        - pay_ln_address
+        - get_lnurls
+        - get_by_identifier
+        - get_id
+        - update_lnurl
 ### Onchain 
 - To create Onchain Transactions, simply follow the instruction at the beginning of this sub-heading and instantiate a new `Onchain` class.
     - The following functions are available:
